@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import ContactForm from '../../components/contactForm/ContactForm'
+import TileList from '../../components/tileList/TileList'
 
 export const ContactsPage = () => {
   /*
   Define state variables for 
   contact info and duplicate check
   */
+ const [name, nameSetter] = useState('')
+ const [phone, phoneSetter] = useState('')
+ const [email, emailSetter] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault();
