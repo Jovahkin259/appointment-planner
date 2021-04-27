@@ -26,13 +26,12 @@ function App() {
     if (!name || !phone || !email) {
       throw new Error('Invalid Contact')
     }
-
     const newContact = {
       name: name,
       phone: phone,
       email: email
     }
-    contactsSetter(prev => [...prev, newContact])
+    contactsSetter(prevContacts => [...prevContacts, newContact])
   }
 
   const addAppointment = (title, contact, date, time)  => {
@@ -46,7 +45,7 @@ function App() {
       date: date,
       time: time
     }
-    appointmentsSetter(prev => [...prev, newAppointment])
+    appointmentsSetter(prevAppointments => [...prevAppointments, newAppointment])
   }
  
 
@@ -67,11 +66,11 @@ function App() {
           </Route>
           <Route path={ROUTES.CONTACTS}>
              {/* Add props to ContactsPage */}
-            <ContactsPage />
+            <ContactsPage contacts={contacts} addContact={addContact} />
           </Route>
           <Route path={ROUTES.APPOINTMENTS}>
             {/* Add props to AppointmentsPage */}
-            <AppointmentsPage />
+            <AppointmentsPage appointments={appointments} addAppointment={addAppointment} />
           </Route>
         </Switch>
       </main>
