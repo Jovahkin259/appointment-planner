@@ -21,7 +21,33 @@ function App() {
   Implement functions to add data to
   contacts and appointments
   */
+  const addContact = (name, phone, email) => {
 
+    if (!name || !phone || !email) {
+      throw new Error('Invalid Contact')
+    }
+
+    const newContact = {
+      name: name,
+      phone: phone,
+      email: email
+    }
+    contactsSetter(prev => [...prev, newContact])
+  }
+
+  const addAppointment = (title, contact, date, time)  => {
+
+    if (!title || !contact || !date || !time) {
+      throw new Error('Invalid Appointment')
+    }
+    const newAppointment = {
+      title: title,
+      contact: contact,
+      date: date,
+      time: time
+    }
+    appointmentsSetter(prev => [...prev, newAppointment])
+  }
  
 
   return (
